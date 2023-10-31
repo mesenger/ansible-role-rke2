@@ -1,5 +1,14 @@
 ---
 
+- name: Disable AWS nm-cloud service
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  loop:
+    - nm-cloud-setup.service 
+    - nm-cloud-setup.timer
+
 - name: Create the RKE2 config dir
   ansible.builtin.file:
     state: directory
