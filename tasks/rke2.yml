@@ -108,7 +108,8 @@
     executable: /bin/bash
   changed_when: false
   register: installed_rke2_version
-  when: '"rke2-server.service" in ansible_facts.services'
+  #when: '"rke2-server.service" in ansible_facts.services'
+  when: rke2_exists.stat.exists
 
 - name: Copy Custom Manifests
   ansible.builtin.template:
