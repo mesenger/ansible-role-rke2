@@ -100,6 +100,11 @@
   ansible.builtin.set_fact:
     rke2_bin_path: "{{ '/usr/local/bin/rke2' if usr_local.stat.writeable == True else ' /opt/rke2/bin/rke2' }}"
 
+- name: Check rke2 bin exists
+  ansible.builtin.stat:
+    path: "{{ rke2_bin_path }}"
+  register: rke2_exists
+
 - name: Check RKE2 version
   ansible.builtin.shell: |
     set -o pipefail
