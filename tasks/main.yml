@@ -10,7 +10,7 @@
 
 - name: Disable AWS nm-cloud service
   ansible.builtin.service:
-    name: {{ item }}
+    name: "{{ item }}"
     state: stopped
     enabled: no
   loop:
